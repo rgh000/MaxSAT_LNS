@@ -1,0 +1,14 @@
+#!/bin/bash
+wl=60
+mem=32768
+
+echo "c [MSE2021] -- begin -- [MSE2021]"
+gunzip -c $1 > maxsat.wcnf
+./run --timestamp -d 15 -o output.out -v output.var -w output.wat -C $wl -W $wl -M $mem ./tt-open-wbo-inc_static maxsat.wcnf
+cat output.out
+cat output.var
+rm -f maxsat.wcnf
+rm -f output.out
+rm -f output.var
+rm -f output.wat
+echo "c [MSE2021] -- end -- [MSE2021]"
